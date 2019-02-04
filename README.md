@@ -24,4 +24,4 @@ Copy directory to %appdata%\Elgato\StreamDeck\Plugins.
 Use [DistributionTool](https://developer.elgato.com/documentation/stream-deck/sdk/exporting-your-plugin/)
 from the StreamDeck SDK site to build.
 
-    DistributionTool.exe de.louischrist.musiccast.sdPlugin Release
+    DistributionTool.exe de.louischrist.musiccast.sdPlugin .
