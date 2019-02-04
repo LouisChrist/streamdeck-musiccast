@@ -1,0 +1,8 @@
+{
+  "Description": "Yamaha MusicCast Integration.", 
+  "Name": "MusicCast", 
+  "de.louischrist.musiccast.power": {
+    "Name": "MusicCast Power", 
+    "Tooltip": "An/Aus schalter für MusicCast Geräte."
+  }
+}

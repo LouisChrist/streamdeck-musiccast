@@ -1,0 +1,8 @@
+{
+  "Description": "Yamaha MusicCast integration.", 
+  "Name": "MusicCast", 
+  "de.louischrist.musiccast.power": {
+    "Name": "MusicCast Power", 
+    "Tooltip": "Power toggle for MusicCast device."
+  }
+}

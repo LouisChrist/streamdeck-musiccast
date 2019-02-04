@@ -1,0 +1,71 @@
+<head>
+    <meta charset="utf-8" />
+    <title>My Property Inspector</title>
+    <link rel="stylesheet" href="sdpi.css">
+</head>
+
+<body>
+    <div class="sdpi-wrapper">
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">IP Address</div>
+            <input id="ipField" class="sdpi-item-value" value="" placeholder="MusicCast devide IP" required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+                onchange="sendValueToPlugin(event.target.value)">
+        </div>
+    </div>
+
+    <script>
+        var websocket = null;
+        var context = null;
+
+        // called by streamdecj at startup
+        function connectSocket(inPort, inPropertyInspectorUUID, inRegisterEvent, inInfo, inActionInfo) {
+            websocket = new WebSocket('ws://localhost:' + inPort);
+            context = inPropertyInspectorUUID;
+
+            websocket.onopen = function () {
+                var json = {
+                    "event": inRegisterEvent,
+                    "uuid": inPropertyInspectorUUID
+                };
+
+                websocket.send(JSON.stringify(json));
+                
+                sendStartup();
+            };
+
+            websocket.onmessage = function(event) {
+                var json = JSON.parse(event.data)
+                textField = document.getElementById("ipField")
+                textField.value = json.payload.IP
+            };
+
+        }
+
+        // Send ip address to plugin
+        function sendValueToPlugin(value) {
+            if (websocket) {
+                const json = {
+                    "action": "de.louischrist.musiccast.power",
+                    "event": "sendToPlugin",
+                    "context": context, // as received from the 'connectSocket' event
+                    "payload": { "IP": value, "type": "get" }
+                };
+
+                websocket.send(JSON.stringify(json));
+            }
+        }
+
+        function sendStartup() {
+            if (websocket) {
+                const json = {
+                    "action": "de.louischrist.musiccast.power",
+                    "event": "sendToPlugin",
+                    "context": context, // as received from the 'connectSocket' event
+                    "payload": {"type": "startup"}
+                };
+
+                websocket.send(JSON.stringify(json));
+            }
+        }
+    </script>
+</body>

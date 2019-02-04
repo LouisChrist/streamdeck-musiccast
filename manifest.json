@@ -1,0 +1,37 @@
+{
+  "Actions": [
+    {
+      "Icon": "on", 
+      "Name": "MusicCast Power", 
+      "States": [
+        {
+          "Image": "on",
+          "TitleAlignment": "bottom", 
+          "FontSize": "13"
+        },
+        {
+          "Image": "off",
+          "TitleAlignment": "bottom", 
+          "FontSize": "13"
+        }
+      ], 
+      "SupportedInMultiActions": false,
+      "Tooltip": "Power toggle for MusicCast device.", 
+      "UUID": "de.louischrist.musiccast.power"
+    }
+  ], 
+  "Author": "Louis Christ", 
+  "CodePathWin": "streamdeck-musiccast.exe",
+  "Description": "Yamaha MusicCast integration.", 
+  "PropertyInspectorPath": "index_pi.html", 
+  "Name": "MusicCast", 
+  "Icon": "on", 
+  "URL": "https://www.elgato.com/gaming/stream-deck", 
+  "Version": "0.1.1",
+  "OS": [
+    {
+        "Platform": "windows", 
+        "MinimumVersion" : "10"
+    }
+  ]
+}
